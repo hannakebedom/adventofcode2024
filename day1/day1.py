@@ -40,8 +40,5 @@ def part2():
         result += num * right_count[num]
     return result
 
-
-
-
-
+print(part1())
 print(part2())
