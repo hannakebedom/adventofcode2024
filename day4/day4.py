@@ -39,3 +39,30 @@ def part1():
 
 
 print(part1())
+
+def part2():
+    rows = []
+    with open('day4/input.txt') as file:
+        for line in file:
+            rows.append(line.strip())
+
+    result = 0
+
+    for i in range(0, len(rows) - 3 + 1):
+        for j in range(0, len(rows[0]) - 3 + 1):
+            # Extract the 2x3 submatrix
+            submatrix = [row[j:j + 3] for row in rows[i:i + 3]]
+            submatrix = np.array([list(row) for row in submatrix])
+            diagonal = "".join(submatrix.diagonal(0))
+            flipped_matrix = np.fliplr(submatrix)
+            antidiagonal = "".join(flipped_matrix.diagonal(0))
+
+            print(diagonal)
+            print(antidiagonal)
+
+            if (diagonal == "MAS" or diagonal == "MAS"[::-1]) and (antidiagonal == "MAS" or antidiagonal == "MAS"[::-1]):
+                result += 1
+
+    return result
+
+print(part2())
