@@ -58,9 +58,6 @@ def part2():
                 incorrect_updates.append(update)
                 break
 
-
-    print("Incorrect updates:", incorrect_updates)
-
     ordered_updates =  []
     for update in incorrect_updates:
         G = nx.DiGraph()
@@ -73,11 +70,9 @@ def part2():
         try:
             order = list(nx.topological_sort(G))
             ordered_updates.append(order)
-            print("Topological order:", order)
         except nx.NetworkXUnfeasible:
             print("No topological order possible (there's a cycle in the graph).")
 
-    print("Ordered updates:", ordered_updates)
 
     result = 0
 
